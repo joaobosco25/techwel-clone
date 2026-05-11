@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Techwel: venda, aluguel, suprimentos e manutenção de impressoras em Uberlândia e região.">
+  <title>Página inicial | Techwel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Techwel - Página inicial">
+        <img src="{{ url_for('static', filename='img/logo-techwel.png') }}" alt="Logo Techwel">
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="menu-principal" data-site-nav aria-label="Menu principal">
+        <a href="/" class="active">Página inicial</a>
+        <a href="/contato" class="">Contato</a>
+        <a href="/solicitacao-servicos" class="">Solicitação de Serviços</a>
+        <a href="/consultar-os" class="">Consultar OS</a>
+        <a href="/impressoras" class="">Impressoras</a>
+        <a href="/suprimentos" class="">Suprimentos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Assistência técnica especializada</span>
+          <h1>Impressoras, suprimentos e manutenção para sua empresa</h1>
+          <p>Venda, aluguel, outsourcing e assistência técnica em impressoras, com atendimento para empresas, escritórios, clínicas, escolas e hospitais.</p>
+          <div class="actions">
+            <a class="btn" href="/solicitacao-servicos">Solicitar serviço</a>
+            <a class="btn secondary" href="/contato">Falar com a Techwel</a>
+          </div>
+        </div>
+        <div class="hero-card reveal">
+          <div class="hero-device"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="info-strip" aria-label="Condição comercial">
+      Parcelamos em até 6x sem juros
+    </aside>
+
+    <section class="section">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2>Como a Techwel pode ajudar?</h2>
+          <p>Soluções práticas para manter sua operação imprimindo com qualidade, economia e suporte técnico.</p>
+        </header>
+
+        <div class="grid three">
+          <article class="card service-card reveal">
+            <div class="icon-box"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div>
+            <h3>Venda e aluguel de impressoras</h3>
+            <p>Equipamentos de qualidade para suprir a necessidade da sua empresa com flexibilidade.</p>
+            <a class="btn ghost" href="/impressoras">Ver impressoras</a>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="icon-box"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div>
+            <h3>Manutenção de impressoras</h3>
+            <p>Manutenção preventiva e corretiva para reduzir paradas, falhas e custos operacionais.</p>
+            <a class="btn ghost" href="/solicitacao-servicos">Solicitar manutenção</a>
+          </article>
+
+          <article class="card service-card reveal">
+            <div class="icon-box"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div>
+            <h3>Suprimentos diversos</h3>
+            <p>Tintas, toners e materiais de consumo para diferentes modelos e necessidades.</p>
+            <a class="btn ghost" href="/suprimentos">Ver suprimentos</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2>Principais impressoras</h2>
+          <p>Modelos para empresas que precisam de produtividade, qualidade e suporte confiável.</p>
+        </header>
+
+        <div class="product-grid">
+          <article class="card product-card reveal"><div class="product-media"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div><span class="badge">Consultar preço</span><h3>Multifuncional laser HP M177fw</h3><p>Encomendar</p><a class="btn ghost" href="/contato">Pedir orçamento</a></article><article class="card product-card reveal"><div class="product-media"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div><span class="badge">Consultar preço</span><h3>Impressora HP LaserJet P1102W</h3><p>Encomendar</p><a class="btn ghost" href="/contato">Pedir orçamento</a></article><article class="card product-card reveal"><div class="product-media"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div><span class="badge">Consultar preço</span><h3>Multifuncional HP LaserJet Pro M1212nf</h3><p>Encomendar</p><a class="btn ghost" href="/contato">Pedir orçamento</a></article><article class="card product-card reveal"><div class="product-media"><svg class="printer-icon" viewBox="0 0 180 140" role="img" aria-label="Ilustração de impressora">
+  <rect x="43" y="14" width="94" height="58" rx="8" fill="#ffffff" stroke="#274e76" stroke-width="7" />
+  <rect x="22" y="56" width="136" height="62" rx="16" fill="#395d81" />
+  <rect x="47" y="88" width="86" height="38" rx="7" fill="#ffffff" stroke="#64acdd" stroke-width="6" />
+  <circle cx="132" cy="77" r="8" fill="#64acdd" />
+  <path d="M58 101h64" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+  <path d="M66 113h48" stroke="#274e76" stroke-width="5" stroke-linecap="round" />
+</svg></div><span class="badge">Consultar preço</span><h3>Epson Workforce C5710 com Bulk</h3><p>Encomendar</p><a class="btn ghost" href="/contato">Pedir orçamento</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="content reveal">
+          <h2>Mais sobre nós</h2>
+          <p>A Techwel é uma empresa especializada em assistência técnica, venda, aluguel e outsourcing de impressoras. O foco é entregar soluções simples, seguras e eficientes para pequenas, médias e grandes empresas.</p>
+          <br>
+          <p>Atendemos escritórios, instituições de ensino, clínicas, consultórios e hospitais com equipamentos, manutenção e suprimentos.</p>
+          <br>
+          <a class="btn" href="/contato">Entre em contato</a>
+        </div>
+
+        <aside class="feature-panel reveal" aria-label="Diferenciais da Techwel">
+          <ul>
+            <li>Atendimento especializado em impressoras e multifuncionais.</li>
+            <li>Manutenção preventiva e corretiva.</li>
+            <li>Venda, aluguel e outsourcing de equipamentos.</li>
+            <li>Suprimentos para diferentes modelos de impressão.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section contact-band">
+      <div class="container contact-grid">
+        <article class="contact-box reveal">
+          <h2>Horários de funcionamento</h2>
+          <p>Segunda a sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+        </article>
+        <article class="contact-box reveal">
+          <h2>Contato</h2>
+          <p>R. Feliciano De Morais-parte, 235 — Nossa Sra. Aparecida, Uberlândia — MG<br>atendimento@techwel.com.br<br>0800 656 5000</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section aria-labelledby="footer-empresa">
+        <img class="footer-logo" src="{{ url_for('static', filename='img/logo-techwel.png') }}" alt="Logo Techwel">
+        <h2 id="footer-empresa">Techwel</h2>
+        <p>Rua Feliciano de Morais, 235<br>Bairro Aparecida — CEP: 38400-684<br>Uberlândia — MG</p>
+      </section>
+
+      <section aria-labelledby="footer-contato">
+        <h3 id="footer-contato">Contato</h3>
+        <p>0800 656 5000<br>(34) 3213-8204<br>(34) 3305-0439<br>atendimento@techwel.com.br</p>
+      </section>
+
+      <section aria-labelledby="footer-newsletter">
+        <h3 id="footer-newsletter">Receba nossas novidades</h3>
+        <form class="newsletter" data-demo>
+          <label for="newsletter-email">E-mail</label>
+          <input class="input" id="newsletter-email" name="email" type="email" placeholder="Seu e-mail" required>
+          <button class="btn" type="submit">Cadastrar</button>
+          <p class="success">Obrigado pela sua inscrição!</p>
+        </form>
+      </section>
+    </div>
+
+    <div class="container footer-bottom">
+      <small>© 2026 Techwel. Projeto estático em HTML, CSS e JS puros.</small>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

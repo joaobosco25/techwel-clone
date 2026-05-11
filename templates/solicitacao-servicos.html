@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Techwel: venda, aluguel, suprimentos e manutenção de impressoras em Uberlândia e região.">
+  <title>Solicitação de Serviços | Techwel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Techwel - Página inicial">
+        <img src="{{ url_for('static', filename='img/logo-techwel.png') }}" alt="Logo Techwel">
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="menu-principal" data-site-nav aria-label="Menu principal">
+        <a href="/" class="">Página inicial</a>
+        <a href="/contato" class="">Contato</a>
+        <a href="/solicitacao-servicos" class="active">Solicitação de Serviços</a>
+        <a href="/consultar-os" class="">Consultar OS</a>
+        <a href="/impressoras" class="">Impressoras</a>
+        <a href="/suprimentos" class="">Suprimentos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="page-hero">
+      <div class="container reveal">
+        <h1>Solicitação de serviços</h1>
+        <p>Abra uma solicitação informando os dados do cliente, do equipamento e o problema apresentado.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <form class="card form-card" data-demo>
+          <div class="notice">
+            Ao enviar este formulário, você autoriza o contato da Techwel para atendimento da solicitação. A integração real com Flask/PostgreSQL será feita na próxima etapa.
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="cpf-cnpj">CPF/CNPJ</label>
+              <input class="input" id="cpf-cnpj" name="cpf_cnpj" required>
+            </div>
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input class="input" id="nome" name="nome" required>
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input class="input" id="empresa" name="empresa">
+            </div>
+            <div class="field">
+              <label for="celular">Celular</label>
+              <input class="input" id="celular" name="celular" required>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input class="input" id="email" name="email" type="email" required>
+            </div>
+            <div class="field">
+              <label for="endereco">Endereço</label>
+              <input class="input" id="endereco" name="endereco" required>
+            </div>
+            <div class="field">
+              <label for="marca">Marca</label>
+              <input class="input" id="marca" name="marca" required>
+            </div>
+            <div class="field">
+              <label for="modelo">Modelo</label>
+              <input class="input" id="modelo" name="modelo" required>
+            </div>
+            <div class="field">
+              <label for="serie">Número de série</label>
+              <input class="input" id="serie" name="serie">
+            </div>
+            <div class="field">
+              <label for="problema">Tipo de problema</label>
+              <select id="problema" name="problema" required>
+                <option value="">Selecione</option>
+                <option>Impressora não imprime</option>
+                <option>Falha na qualidade de impressão</option>
+                <option>Atolamento de papel</option>
+                <option>Instalação ou configuração</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="descricao">Descrição do problema</label>
+              <textarea id="descricao" name="descricao" required></textarea>
+            </div>
+            <div class="field full">
+              <label for="arquivo">Imagem ou vídeo do problema</label>
+              <input class="input" id="arquivo" name="arquivo" type="file">
+            </div>
+          </div>
+
+          <br>
+          <button class="btn" type="submit">Enviar solicitação</button>
+          <p class="success">Solicitação registrada para demonstração.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <section aria-labelledby="footer-empresa">
+        <img class="footer-logo" src="{{ url_for('static', filename='img/logo-techwel.png') }}" alt="Logo Techwel">
+        <h2 id="footer-empresa">Techwel</h2>
+        <p>Rua Feliciano de Morais, 235<br>Bairro Aparecida — CEP: 38400-684<br>Uberlândia — MG</p>
+      </section>
+
+      <section aria-labelledby="footer-contato">
+        <h3 id="footer-contato">Contato</h3>
+        <p>0800 656 5000<br>(34) 3213-8204<br>(34) 3305-0439<br>atendimento@techwel.com.br</p>
+      </section>
+
+      <section aria-labelledby="footer-newsletter">
+        <h3 id="footer-newsletter">Receba nossas novidades</h3>
+        <form class="newsletter" data-demo>
+          <label for="newsletter-email">E-mail</label>
+          <input class="input" id="newsletter-email" name="email" type="email" placeholder="Seu e-mail" required>
+          <button class="btn" type="submit">Cadastrar</button>
+          <p class="success">Obrigado pela sua inscrição!</p>
+        </form>
+      </section>
+    </div>
+
+    <div class="container footer-bottom">
+      <small>© 2026 Techwel. Projeto estático em HTML, CSS e JS puros.</small>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

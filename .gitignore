@@ -1,0 +1,36 @@
+# Virtual Environment
+venv/
+.env
+.env.local
+.flaskenv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Flask
+instance/
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads
+uploads/
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# Migrations cache
+migrations/__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
