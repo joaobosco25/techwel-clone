@@ -74,7 +74,7 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--azul-noite);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--borda);
 }
@@ -705,6 +705,10 @@ textarea {
     display: none;
   }
 
+  .site-header {
+    background:var(--azul-noite);
+  }
+
   .site-nav {
     position: static;
     display: flex;
@@ -721,6 +725,7 @@ textarea {
   .site-nav a {
     padding: 10px 12px;
     font-size: 0.92rem;
+    color: white;
   }
 
   .site-nav a:hover,
