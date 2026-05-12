@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Techwel: venda, aluguel, suprimentos e manutenção de impressoras em Uberlândia e região.">
   <title>Solicitação de Serviços | Techwel</title>
+  <meta name="recaptcha-site-key" content="{{ recaptcha_site_key }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -27,6 +28,7 @@
         <a href="/consultar-os" class="">Consultar OS</a>
         <a href="/impressoras" class="">Impressoras</a>
         <a href="/suprimentos" class="">Suprimentos</a>
+        <a href="/seja-um-tecnico" class="">Seja um técnico</a>
       </nav>
     </div>
   </header>
@@ -35,77 +37,108 @@
     <section class="page-hero">
       <div class="container reveal">
         <h1>Solicitação de serviços</h1>
-        <p>Abra uma solicitação informando os dados do cliente, do equipamento e o problema apresentado.</p>
+        <p>Abra uma solicitação em etapas informando endereço, dados de contato e descrição do problema.</p>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <form class="card form-card" data-demo>
+        <form class="card form-card" action="/api/formulario" method="post" enctype="multipart/form-data" data-ajax-form>
+          <input type="hidden" name="form_type" value="solicitacao_servicos">
+          <div class="honeypot" aria-hidden="true">
+            <label>Não preencha este campo</label>
+            <input name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="notice">
-            Ao enviar este formulário, você autoriza o contato da Techwel para atendimento da solicitação. A integração real com Flask/PostgreSQL será feita na próxima etapa.
+            Ao enviar este formulário, você autoriza a TechWel a tratar os dados informados exclusivamente para atendimento, orçamento, suporte técnico e contato comercial relacionado à solicitação. Os dados não serão gravados em banco dedicado; serão encaminhados ao e-mail responsável pelo atendimento, com proteção administrativa e registro técnico sem dados sensíveis.
           </div>
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="cpf-cnpj">CPF/CNPJ</label>
-              <input class="input" id="cpf-cnpj" name="cpf_cnpj" required>
+          <div class="form-steps" data-form-steps>
+            <div class="step-tabs" role="tablist" aria-label="Etapas da solicitação">
+              <button class="step-tab active" type="button" data-step-target="1" role="tab" aria-selected="true">1. Endereço</button>
+              <button class="step-tab" type="button" data-step-target="2" role="tab" aria-selected="false">2. Dados</button>
+              <button class="step-tab" type="button" data-step-target="3" role="tab" aria-selected="false">3. Revisão</button>
             </div>
-            <div class="field">
-              <label for="nome">Nome</label>
-              <input class="input" id="nome" name="nome" required>
-            </div>
-            <div class="field">
-              <label for="empresa">Empresa</label>
-              <input class="input" id="empresa" name="empresa">
-            </div>
-            <div class="field">
-              <label for="celular">Celular</label>
-              <input class="input" id="celular" name="celular" required>
-            </div>
-            <div class="field">
-              <label for="email">E-mail</label>
-              <input class="input" id="email" name="email" type="email" required>
-            </div>
-            <div class="field">
-              <label for="endereco">Endereço</label>
-              <input class="input" id="endereco" name="endereco" required>
-            </div>
-            <div class="field">
-              <label for="marca">Marca</label>
-              <input class="input" id="marca" name="marca" required>
-            </div>
-            <div class="field">
-              <label for="modelo">Modelo</label>
-              <input class="input" id="modelo" name="modelo" required>
-            </div>
-            <div class="field">
-              <label for="serie">Número de série</label>
-              <input class="input" id="serie" name="serie">
-            </div>
-            <div class="field">
-              <label for="problema">Tipo de problema</label>
-              <select id="problema" name="problema" required>
-                <option value="">Selecione</option>
-                <option>Impressora não imprime</option>
-                <option>Falha na qualidade de impressão</option>
-                <option>Atolamento de papel</option>
-                <option>Instalação ou configuração</option>
-                <option>Outro</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="descricao">Descrição do problema</label>
-              <textarea id="descricao" name="descricao" required></textarea>
-            </div>
-            <div class="field full">
-              <label for="arquivo">Imagem ou vídeo do problema</label>
-              <input class="input" id="arquivo" name="arquivo" type="file">
-            </div>
-          </div>
 
-          <br>
-          <button class="btn" type="submit">Enviar solicitação</button>
-          <p class="success">Solicitação registrada para demonstração.</p>
+            <section class="form-step active" data-step="1" role="tabpanel" aria-label="Endereço">
+              <h2>Endereço do atendimento</h2>
+              <p>Informe o CEP válido e o endereço onde o serviço deverá ser realizado.</p>
+              <div class="form-grid two-columns">
+                <div class="field">
+                  <label for="cep">CEP</label>
+                  <input class="input" id="cep" name="cep" inputmode="numeric" data-cep-lookup data-address-target="#rua" autocomplete="postal-code" placeholder="00000-000" maxlength="9" pattern="\d{5}-?\d{3}" required>
+                  <small class="field-help">Digite um CEP válido. Exemplo: 38400-684.</small>
+                </div>
+                <div class="field">
+                  <label for="rua">Rua</label>
+                  <input class="input" id="rua" name="rua" autocomplete="address-line1" required>
+                </div>
+                <div class="field">
+                  <label for="numero">Número</label>
+                  <input class="input" id="numero" name="numero" autocomplete="address-line2" required>
+                </div>
+              </div>
+              <div class="step-actions">
+                <button class="btn" type="button" data-next-step>Próxima etapa</button>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="2" role="tabpanel" aria-label="Dados da solicitação" hidden>
+              <h2>Dados da solicitação</h2>
+              <p>Essas informações serão enviadas ao e-mail administrativo já configurado no sistema.</p>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="nome-completo">Nome completo</label>
+                  <input class="input" id="nome-completo" name="nome_completo" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="email">E-mail</label>
+                  <input class="input" id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field full">
+                  <span class="field-label">Situação do cliente</span>
+                  <div class="radio-group" role="radiogroup" aria-label="Situação do cliente">
+                    <label class="radio-option">
+                      <input type="radio" name="tipo_cliente" value="Cliente com contrato" required>
+                      Cliente com contrato
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="tipo_cliente" value="Cliente sem contrato" required>
+                      Cliente sem contrato
+                    </label>
+                  </div>
+                  <small class="field-help">Essa informação ajuda a equipe a priorizar e direcionar a tratativa correta.</small>
+                </div>
+                <div class="field full">
+                  <label for="descricao">Descrição do problema</label>
+                  <textarea id="descricao" name="descricao" required></textarea>
+                </div>
+              </div>
+              <div class="step-actions split">
+                <button class="btn ghost" type="button" data-prev-step>Voltar</button>
+                <button class="btn" type="button" data-next-step>Próxima etapa</button>
+              </div>
+            </section>
+
+            <section class="form-step" data-step="3" role="tabpanel" aria-label="Revisão e envio" hidden>
+              <h2>Revisão e envio</h2>
+              <p>Confira os dados antes de enviar. O Excel recebido por e-mail seguirá estes mesmos campos.</p>
+              <div class="review-box" data-review-box></div>
+              <div class="field full">
+                <div class="notice">Por segurança, este formulário não aceita anexos. Caso necessário, a equipe solicitará imagens ou documentos durante o atendimento.</div>
+              </div>
+              <div class="field full">
+                <label class="privacy-check">
+                  <input type="checkbox" name="lgpd_consent" value="1" required>
+                  Declaro que li e concordo com a <a href="/politica-de-privacidade">Política de Privacidade</a>, autorizando o uso dos dados para atendimento da minha solicitação.
+                </label>
+              </div>
+              <div class="step-actions split">
+                <button class="btn ghost" type="button" data-prev-step>Voltar</button>
+                <button class="btn" type="submit">Enviar solicitação</button>
+              </div>
+            </section>
+          </div>
+          <p class="success">Solicitação enviada com sucesso. A TechWel retornará em breve.</p>
         </form>
       </div>
     </section>
@@ -127,9 +160,18 @@
 
       <section aria-labelledby="footer-newsletter">
         <h3 id="footer-newsletter">Receba nossas novidades</h3>
-        <form class="newsletter" data-demo>
+        <form class="newsletter" action="/api/formulario" method="post" data-ajax-form>
+          <input type="hidden" name="form_type" value="newsletter">
+          <div class="honeypot" aria-hidden="true">
+            <label>Não preencha este campo</label>
+            <input name="website" tabindex="-1" autocomplete="off">
+          </div>
           <label for="newsletter-email">E-mail</label>
           <input class="input" id="newsletter-email" name="email" type="email" placeholder="Seu e-mail" required>
+          <label class="privacy-check">
+            <input type="checkbox" name="lgpd_consent" value="1" required>
+            Aceito receber comunicações e autorizo o tratamento dos meus dados conforme a <a href="/politica-de-privacidade">Política de Privacidade</a>.
+          </label>
           <button class="btn" type="submit">Cadastrar</button>
           <p class="success">Obrigado pela sua inscrição!</p>
         </form>
@@ -137,10 +179,16 @@
     </div>
 
     <div class="container footer-bottom">
-      <small>© 2026 Techwel. Projeto estático em HTML, CSS e JS puros.</small>
+      <small>© 2026 Techwel. <a href="/politica-de-privacidade">Política de Privacidade</a>.</small>
     </div>
   </footer>
 
+  <a class="floating-whatsapp" href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer" aria-label="Me chame no WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 32 32" focusable="false">
+      <path d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.6 28.8l6.6-1.5A12.7 12.7 0 1 0 16 3.2Zm0 2.4a10.3 10.3 0 0 1 8.7 15.8 10.3 10.3 0 0 1-12.5 3.7l-.5-.2-4 1 .9-3.9-.3-.5A10.3 10.3 0 0 1 16 5.6Zm-4.1 5.5c-.3 0-.8.1-1.2.6-.4.5-1.5 1.5-1.5 3.6 0 2.1 1.5 4.1 1.7 4.4.2.3 3 4.8 7.4 6.5 3.7 1.5 4.4.9 5.2.8.8-.1 2.6-1.1 3-2.1.4-1 .4-1.9.3-2.1-.1-.2-.4-.3-.9-.6l-2.8-1.4c-.4-.1-.7-.2-1 .2-.3.5-1.1 1.4-1.4 1.7-.3.3-.5.3-1 .1-.5-.2-2-.8-3.8-2.4-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8l-1.3-3.1c-.3-.8-.7-.7-1-.7h-.5Z"/>
+    </svg>
+    <span>Me chame no WhatsApp</span>
+  </a>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

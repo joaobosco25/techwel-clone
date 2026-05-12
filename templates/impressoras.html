@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Techwel: venda, aluguel, suprimentos e manutenção de impressoras em Uberlândia e região.">
   <title>Impressoras | Techwel</title>
+  <meta name="recaptcha-site-key" content="{{ recaptcha_site_key }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -27,6 +28,7 @@
         <a href="/consultar-os" class="">Consultar OS</a>
         <a href="/impressoras" class="active">Impressoras</a>
         <a href="/suprimentos" class="">Suprimentos</a>
+        <a href="/seja-um-tecnico" class="">Seja um técnico</a>
       </nav>
     </div>
   </header>
@@ -103,9 +105,18 @@
 
       <section aria-labelledby="footer-newsletter">
         <h3 id="footer-newsletter">Receba nossas novidades</h3>
-        <form class="newsletter" data-demo>
+        <form class="newsletter" action="/api/formulario" method="post" data-ajax-form>
+          <input type="hidden" name="form_type" value="newsletter">
+          <div class="honeypot" aria-hidden="true">
+            <label>Não preencha este campo</label>
+            <input name="website" tabindex="-1" autocomplete="off">
+          </div>
           <label for="newsletter-email">E-mail</label>
           <input class="input" id="newsletter-email" name="email" type="email" placeholder="Seu e-mail" required>
+          <label class="privacy-check">
+            <input type="checkbox" name="lgpd_consent" value="1" required>
+            Aceito receber comunicações e autorizo o tratamento dos meus dados conforme a <a href="/politica-de-privacidade">Política de Privacidade</a>.
+          </label>
           <button class="btn" type="submit">Cadastrar</button>
           <p class="success">Obrigado pela sua inscrição!</p>
         </form>
@@ -113,10 +124,16 @@
     </div>
 
     <div class="container footer-bottom">
-      <small>© 2026 Techwel. Projeto estático em HTML, CSS e JS puros.</small>
+      <small>© 2026 Techwel. <a href="/politica-de-privacidade">Política de Privacidade</a>.</small>
     </div>
   </footer>
 
+  <a class="floating-whatsapp" href="{{ whatsapp_link }}" target="_blank" rel="noopener noreferrer" aria-label="Me chame no WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 32 32" focusable="false">
+      <path d="M16 3.2A12.7 12.7 0 0 0 5.1 22.4L3.6 28.8l6.6-1.5A12.7 12.7 0 1 0 16 3.2Zm0 2.4a10.3 10.3 0 0 1 8.7 15.8 10.3 10.3 0 0 1-12.5 3.7l-.5-.2-4 1 .9-3.9-.3-.5A10.3 10.3 0 0 1 16 5.6Zm-4.1 5.5c-.3 0-.8.1-1.2.6-.4.5-1.5 1.5-1.5 3.6 0 2.1 1.5 4.1 1.7 4.4.2.3 3 4.8 7.4 6.5 3.7 1.5 4.4.9 5.2.8.8-.1 2.6-1.1 3-2.1.4-1 .4-1.9.3-2.1-.1-.2-.4-.3-.9-.6l-2.8-1.4c-.4-.1-.7-.2-1 .2-.3.5-1.1 1.4-1.4 1.7-.3.3-.5.3-1 .1-.5-.2-2-.8-3.8-2.4-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-1 .2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8l-1.3-3.1c-.3-.8-.7-.7-1-.7h-.5Z"/>
+    </svg>
+    <span>Me chame no WhatsApp</span>
+  </a>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

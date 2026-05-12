@@ -1,36 +1,38 @@
-# Virtual Environment
-venv/
+# Ambiente e segredos
 .env
-.env.local
-.flaskenv
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
 
-# Python cache
+# Python
+venv/
+.venv/
 __pycache__/
-*.pyc
-*.pyo
-
-# Flask
-instance/
-
-# Database
-*.db
-*.sqlite3
-
-# Uploads
-uploads/
-
-# Logs
-*.log
-
-# VSCode
-.vscode/
-
-# Pytest
+*.py[cod]
+*$py.class
 .pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 
-# Migrations cache
-migrations/__pycache__/
+# Flask / runtime
+instance/
+logs/
+*.log
+*.sqlite3
+*.db
+uploads/
+tmp/
 
-# OS files
+# Build / editor / SO
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+# Dependências locais
+node_modules/
+dist/
+build/

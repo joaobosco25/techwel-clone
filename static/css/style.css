@@ -753,3 +753,248 @@ textarea {
     grid-template-columns: 1.2fr 1fr 1fr;
   }
 }
+
+.form-status.error,
+.success.error {
+  color: #8a1f11;
+  background: #fff1ed;
+  border-color: rgba(138, 31, 17, 0.22);
+}
+
+.honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.privacy-content h2 {
+  margin-top: 28px;
+}
+
+.privacy-content ul {
+  padding-left: 20px;
+}
+
+.form-steps {
+  display: grid;
+  gap: 20px;
+}
+
+.step-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.step-tab {
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  color: var(--azul-noite);
+  font-weight: 800;
+  background: var(--branco);
+  cursor: pointer;
+}
+
+.step-tab.active {
+  border-color: var(--azul-claro);
+  color: var(--branco);
+  background: linear-gradient(135deg, var(--azul-base), var(--azul-claro));
+}
+
+.form-step {
+  display: grid;
+  gap: 16px;
+}
+
+.form-step[hidden],
+.form-step:not(.active) {
+  display: none !important;
+}
+
+.step-tab[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form-step h2 {
+  margin: 0;
+  color: var(--azul-noite);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.form-step p {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.form-grid.two-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field-help {
+  color: var(--texto-suave);
+  font-size: 0.82rem;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.step-actions.split {
+  justify-content: space-between;
+}
+
+.btn.ghost {
+  color: var(--azul-noite);
+  background: var(--azul-gelo);
+  box-shadow: none;
+}
+
+.review-box {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(100, 172, 221, 0.35);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.review-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.review-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.review-item strong {
+  color: var(--azul-noite);
+}
+
+@media (max-width: 720px) {
+  .step-tabs,
+  .form-grid.two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .step-actions,
+  .step-actions.split {
+    justify-content: stretch;
+  }
+
+  .step-actions .btn {
+    width: 100%;
+  }
+
+  .review-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--azul-noite);
+  font-weight: 800;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--branco);
+  color: var(--azul-noite);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.radio-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--azul-base);
+}
+
+@media (max-width: 720px) {
+  .radio-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Botão flutuante WhatsApp */
+.floating-whatsapp {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(37, 211, 102, 0.94);
+  box-shadow: 0 12px 30px rgba(17, 32, 51, 0.22);
+  font-weight: 800;
+  font-size: 0.92rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.floating-whatsapp:hover,
+.floating-whatsapp:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(17, 32, 51, 0.28);
+}
+
+.floating-whatsapp svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.align-start {
+  align-items: start;
+}
+
+@media (max-width: 560px) {
+  .floating-whatsapp {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .floating-whatsapp span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
